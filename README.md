@@ -70,14 +70,18 @@ The blue message at the bottom acts like a printer, in real conditions, a label 
 the unit number is not important, you can pass through sample production stages which are to be tracked and recorded if
 needed. Here there are just dummy strings in a certificate.
 
-When finished, use a `Save Passport` button to upload the certificate to IPFS and Robonomics network.
+![Single Save Passport](media/single_save_passport.png)
+
+Before clicking `Save passport`, navigate to a 
+[local Robonomics Node](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer), you will need it later.
+
+Back in the FEECC interface, click `Save Passport` button.
 
 ![Single Certificate](media/single_certificate.png)
 
 
-What happens here is the certificate is uploaded to IPFS with some tracked data and the CID is stored in Robonomics
-Network, you may see it in the extrinsics list. Your local Robonomics Portal is
-[this link](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer)
+What happens here is the certificate is uploaded to IPFS along with some tracked data and the CID is stored in Robonomics
+Network, you may see it in the extrinsics list or recent events.
 
 ![Single Datalog](media/single_datalog.png)
 
@@ -95,9 +99,11 @@ life this system uses various peripheral devices to collect and share data.
 
 ## Composite devices
 
-It is possible to assemble a composite device, you first need to assemble a `Sample Device` **(save its unit number)** 
-which is a part of a bigger one and then click `Final Assembly`, "scan" the unit id ith a `hid-emulator` 
+It is possible to assemble a composite device, you first need to assemble a `Composite Device -> Sample Device` **(save its unit number)** 
+which is a part of a bigger one and then click `Composite Device -> Final Assembly`, "scan" the unit id ith a `hid-emulator` 
 (use previously saved unit number) and assemble the final device. 
+
+All the unit data is accessible locally in a unit-passports folder.
 
 ## Uninstall
 
