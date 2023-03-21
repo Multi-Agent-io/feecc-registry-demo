@@ -76,7 +76,8 @@ When finished, use a `Save Passport` button to upload the certificate to IPFS an
 
 
 What happens here is the certificate is uploaded to IPFS with some tracked data and the CID is stored in Robonomics
-Network, you may see it in the extrinsics list.
+Network, you may see it in the extrinsics list. Your local Robonomics Portal is
+[this link](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer)
 
 ![Single Datalog](media/single_datalog.png)
 
