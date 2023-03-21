@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --primary: #5F2EEA;
+  --blue1: #20639B;
+  --red1: #ED553B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+hr {
+  border-style: solid;
+}
+
+button {
+  cursor: pointer;
+}
+
+//*:focus {
+//  outline: none;
+//}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.activeModal {
+  overflow: hidden;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: .6s;
+  transform: translateY(0px) !important;
+  transform: translateX(0px) !important;
+}
+.fadeOut {
+  transition: .6s;
+  opacity: 0;
+  transform: translateY(-60px) !important;
+}
+
+.fadeOutLeft {
+  opacity: 0;
+  transition: .6s;
+  transform: translateX(-100px) !important;
+}
+.fadeOutRight {
+  opacity: 0;
+  transition: .6s;
+  transform: translateX(100px) !important;
+}

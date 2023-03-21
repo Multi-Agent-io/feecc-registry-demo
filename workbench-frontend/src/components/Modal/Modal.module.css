@@ -1,0 +1,44 @@
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(1, 1, 1, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modalContentWrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: calc(70vw - 80px);
+    top: 20vh;
+    left: 15vw;
+
+    z-index: 11;
+    animation: slide-down 300ms ease-out forwards;
+
+}
+
+.modalContent {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-3rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

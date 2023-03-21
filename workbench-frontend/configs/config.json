@@ -1,0 +1,8 @@
+{
+  "socket": "http://localhost:5000",
+  "interface_language": "en",
+  "dev_show_reducers": true,
+  "pulling_period": 1000,
+  "use_devtools": false,
+  "show_test_schemas": true
+}

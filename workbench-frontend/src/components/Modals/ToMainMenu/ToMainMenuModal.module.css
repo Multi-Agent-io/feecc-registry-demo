@@ -1,0 +1,19 @@
+.contentWrapper {
+}
+
+.contentHeader {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.contentText {
+    padding-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.buttonsWrapper {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}

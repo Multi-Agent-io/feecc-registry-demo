@@ -1,0 +1,15 @@
+[Unit]
+Description=Node.js server for Frontend of Feecc QA system
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=FRONTEND_DIRECTORY
+Environment=NODE_PORT=3000
+ExecStart=/usr/bin/node /FRONTEND_DIRECTORY/nodeServer.js
+User=PROJECT_USER
+StartLimitBurst=10
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

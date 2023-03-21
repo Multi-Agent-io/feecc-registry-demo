@@ -1,0 +1,111 @@
+x-shared-top-level: &shared-top-level
+  restart: "no"
+
+version: "3.9"
+
+#networks:
+#  feecc-academy:
+
+services:
+  mongodb:
+    <<: *shared-top-level
+    image: mongo:jammy
+    container_name: feecc_academy_mongoDB
+#    network_mode: host
+    networks:
+      - feecc-academy
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: FEECC-Academy
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    volumes:
+      - ./mongodb-local:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  robonomics:
+    <<: *shared-top-level
+    image: robonomics/robonomics:sha-bd71a23
+    container_name: feecc_academy_robonomics_node
+    command: "robonomics --dev --tmp"
+#    network_mode: host
+    networks:
+      - feecc-academy
+    ports:
+      - "9944:9944"
+
+  ipfsnode:
+    <<: *shared-top-level
+    image: ipfs/go-ipfs:v0.17.0
+    container_name: feecc_academy_ipfsnode
+    healthcheck:
+      interval: 5s
+#    network_mode: host
+    networks:
+      - feecc-academy
+    ports:
+      - "5001:5001"
+      - "8080:8080"
+
+  workbench-daemon:
+    <<: *shared-top-level
+    container_name: feecc_academy_workbench_daemon
+#    network_mode: host
+    networks:
+      - feecc-academy
+    ports:
+      - "5000:5000"
+    environment:
+      MONGODB_URI: "mongodb://root:pass@localhost:27017/?authMechanism=DEFAULT"
+      MONGODB_DB_NAME: "FEECC-Academy"
+      PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR: "/ip4/127.0.0.1/tcp/5001/http"
+      IPFS_GATEWAY_LINK_PREFIX: "https://gateway.ipfs.io/ipfs/"
+      ROBONOMICS_ACCOUNT_SEED: "//Alice"  # Your Robonomics network account seed phrase
+      ROBONOMICS_REMOTE_WS: "ws://127.0.0.1:9944"
+      HID_DEVICES_RFID_READER: Sample RFID Scanner  # RFID reader device name
+      HID_DEVICES_BARCODE_READER: Sample Barcode Scanner  # Barcode reader device name
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./unit-passports/:/src/unit-passports/"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      robonomics:
+        condition: service_started
+    build:
+      context: workbench-daemon
+      dockerfile: Dockerfile
+
+  workbench-frontend:
+    <<: *shared-top-level
+    container_name: feecc_academy_workbench_frontend
+#    network_mode: host
+    networks:
+      - feecc-academy
+    ports:
+      - "3000:3000"
+    build:
+      context: workbench-frontend
+      dockerfile: Dockerfile
+      args:
+        APPLICATION_SOCKET: "http://localhost:5000"
+        INTERFACE_LANGUAGE: "en"
+        DEV_SHOW_REDUCERS: "true"
+        SHOW_TEST_SCHEMAS: "true"
+        USE_DEVTOOLS: "true"
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
+      interval: 1m
+      timeout: 3s
+      retries: 3
+      start_period: 20s
+
+
+

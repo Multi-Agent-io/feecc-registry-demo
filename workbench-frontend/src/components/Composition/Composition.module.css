@@ -1,0 +1,71 @@
+.stepper {
+    margin-top: 20px;
+}
+
+.button {
+    margin-top: 20px;
+    max-width: 300px;
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    max-width: 350px;
+    gap: 30px;
+}
+
+.controls:first-child {
+    max-width: 350px;
+}
+.timerWrapper{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.wrapper {
+    padding-top: 30px;
+    margin: 0 20vw;
+}
+.startButton {
+    margin-left: 100px;
+}
+
+.textWrapper {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.buttonsWrapper {
+    display: flex;
+    gap: 30px;
+    max-width: 700px;
+}
+
+.boldText {
+    font-weight: bold;
+    display: inline;
+}
+
+.nextStep {
+    color: var(--red1);
+    font-weight: bold;
+}
+
+.notificationButton {
+    background-color: rgba(255, 255, 255, .2);
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    transition: all .3s;
+}
+
+.notificationButton:hover {
+    background-color: rgba(255, 255, 255, .5);
+    transition: all .3s;
+}

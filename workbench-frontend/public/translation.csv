@@ -1,0 +1,46 @@
+key,ru,en
+CompositionNumber,Номер сборки,Composition number
+AuthorizedEmployee,Авторизован:,Authorized:
+Position,Должность:,Position:
+CompositionNumber,Номер сборки:,Composition number:
+LastSessionDuration,Длительность прошлой сессии:,Last composition duration
+SessionDuration,Длительность сборки:,Composition duration
+StartComposition,Начать сборку,Start composition
+FinishSession,Закончить сессию,Finish session
+Finish,Закончить,Finish
+Next,Далее,Next
+QualityMonitoringSystem,"Система контроля качества производства на базе платформы ""Feecc""","Production quality control system based on the ""Feecc"" platform"
+AuthorizeToProceed,Для начала сборки авторизуйтесь,Authorize to proceed
+NotEnoughDuration,Слишком малая длительность этапа!,Step duration is too small!
+CancelComposition,Отменить сборку,Cancel composition
+SavePassport,Сохранить паспорт,Save passport
+SpecifyCompositionType,Укажите вариант сборки,Specify composition type
+Back,Назад,Back
+GettingWorkbenchNo,Идёт определение номера рабочего места,Workbench number receiving in progress
+ProceedComposition,Продолжить сборку,Proceed composition
+SetOnPause,Пауза,Pause
+DropWarning,У вас есть незавершённая сборка. Вы можете продолжить сборку или отказаться от продолжения. При отказе от продолжения вам будет доступна возможность начать другую сборку. Продолжить эту сборку вы сможете повторно просканировав нужный штрих-код.,"You have an unfinished build. You can continue building or refuse to continue. If you refuse to continue, you will have the option to start another build. You can continue this assembly by re-scanning the desired barcode."
+PauseTimestampIsNotSet,Временная метка для данного продолжения не получена. Попробуйте перезагрузить страницу.,Timestamp for this procedure is not set. Try to refresh your page
+UnitType1,Подсборка 1,Type 1
+UnitType2,Подсборка 2,Type 2
+RequiredComponents,Для продолжения необходимо просканировать следующие сборки,You have to scan the following units to proceed
+Simple,Простые,Simple
+Complex,Составные,Composite
+SelectOneOfTheFollowingCompositions,Вы можете выбрать собрать подсборку или финальныю сборку,You have to select one of the following steps
+FinishingSteps,Финальная сборка,Final assembly
+FinishStep,Остановить здесь,Stop here
+NoUnitsFound,Нет изделий на доработку,No products for revision
+PassportsForRevision,Изделия на доработку,Products for revision
+CompositionWillProceedFrom,Сборка продолжится с шага,Composition will be proceed from the step
+BackToMenu,в главное меню,back to main menu
+ProceedComposition,продолжить сборку,proceed composition
+ImportantMessage,Важное сообщение,Important message
+YouAreTryingToCancel,Вы пытаетесь отменить,You're trying to cancel
+Final,финальную,final
+composition,сборку,composition
+YouHaveToAcknowledge,Вам важно понимать следующее,You have to acknowledge following
+UsedComponentsAreNowNotAvailableForOthers,использованные при её старте компоненты уже не получится использовать для других сборок,used components are not available for other composition
+RecommendToFinish,Рекомендуется завершить финальную сборку,It's recommended to finish final composition
+YouCanRecoverThisCompositionByScanningCode,Вернуться к этой сборке можно будет просканировав соответствующий штрих-код,You can return to this assembly by scanning the corresponding barcode
+YouCanChooseWhatToDoNext,Вы можете выбрать что сделать дальше - перейти на главное меню или вернуться к сборке,You can choose what to do next - go back to the main menu or proceed composition
+ReloadPage,Перезагрузить страницу,Reload page

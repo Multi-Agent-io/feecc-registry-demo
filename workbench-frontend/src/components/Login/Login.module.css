@@ -1,0 +1,66 @@
+.fullWrapper {
+  margin-top: -100px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20vh;
+  margin-right: 20vh;
+  gap: 100px;
+  /*margin-top: 5vh;*/
+}
+
+.header {
+  font-size: 30px;
+  font-weight: 350;
+  text-align: center;
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: 1fr;
+  /*justify-content: space-evenly;*/
+  margin-top: 5vh;
+}
+
+.icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.leftLogo{
+  /*width: 130px;*/
+  /*height: 150px;*/
+}
+.centerLogo {
+  width: 150px;
+  height: 150px;
+}
+.rightLogo {
+  width: 180px;
+  height: 180px;
+}
+
+.message {
+  margin-top: 5vh;
+  font-size: 20px;
+  text-align: center;
+}
+
+.loading {
+  /*width: 100%;*/
+  margin:auto;
+  width: 800px;
+  height: 300px;
+  background-image: url('data:image/svg+xml;utf8,\
+      <svg width="800" height="300" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">\
+        <path fill="gray" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">\
+          <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="3s" from="0 50 50" to="360 50 50" repeatCount="indefinite" />\
+      </path>\
+  </svg>');
+}
