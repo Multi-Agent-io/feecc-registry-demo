@@ -3,11 +3,10 @@ from copy import copy
 from time import sleep
 from typing import no_type_check
 
-from fastapi.testclient import TestClient
-from requests import Response
-
 from app import app
+from fastapi.testclient import TestClient
 from feecc_workbench.states import State
+from requests import Response
 
 CLIENT = TestClient(base_url="http://127.0.0.1:5000", app=app)
 VALID_TEST_CARD = "1111111111"

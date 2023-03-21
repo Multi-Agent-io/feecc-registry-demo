@@ -1,16 +1,14 @@
 import pathlib
-
-from loguru import logger
-import ipfshttpclient2 as ipfshttpclient
-from .Messenger import messenger
-from .utils import async_time_execution
 from os import getenv
 
+import ipfshttpclient2 as ipfshttpclient
+from loguru import logger
 
-PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR: str = getenv(
-    "PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR")
-IPFS_GATEWAY_LINK_PREFIX: str = getenv(
-    "IPFS_GATEWAY_LINK_PREFIX")
+from .Messenger import messenger
+from .utils import async_time_execution
+
+PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR: str = getenv("PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR")
+IPFS_GATEWAY_LINK_PREFIX: str = getenv("IPFS_GATEWAY_LINK_PREFIX")
 
 
 @async_time_execution
@@ -20,7 +18,7 @@ async def publish_file(file_path: pathlib.Path) -> tuple[str, str]:
     file_path = pathlib.Path(file_path)
     try:
         with ipfshttpclient.connect(addr=PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR) as client:
-            cid: str = client.add(file_path)['Hash']
+            cid: str = client.add(file_path)["Hash"]
             link: str = f"{IPFS_GATEWAY_LINK_PREFIX}{cid}"
             assert cid and link, "IPFS gateway returned no CID"
     except Exception as e:

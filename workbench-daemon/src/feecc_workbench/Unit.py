@@ -205,8 +205,10 @@ class Unit:
             operation.name += " (not finished.)"
             operation.ended_prematurely = True
 
-        operation.prod_data_hashes = "This is a place for any production data, let it be video record, some sensor " \
-                                     "data or any other data collection representing the production process."
+        operation.prod_data_hashes = (
+            "This is a place for any production data, let it be video record, some sensor "
+            "data or any other data collection representing the production process."
+        )
 
         if operation.additional_info is not None:
             operation.additional_info = {**operation.additional_info, **(additional_info or {})}

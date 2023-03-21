@@ -1,5 +1,6 @@
 import barcode
 
+
 class Barcode:
     def __init__(self, unit_code: str) -> None:
         self.unit_code: str = unit_code

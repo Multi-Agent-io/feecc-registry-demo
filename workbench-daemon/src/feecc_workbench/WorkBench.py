@@ -30,8 +30,7 @@ async def _print_unit_barcode(unit: Unit) -> None:
 async def _print_security_tag() -> None:
     """Print security tag for the unit"""
 
-    messenger.info(
-        f"This message illustrates the process of printing the seal tag")
+    messenger.info(f"This message illustrates the process of printing the seal tag")
 
 
 class WorkBench(metaclass=SingletonMeta):
@@ -214,8 +213,7 @@ class WorkBench(metaclass=SingletonMeta):
         assert self.employee is not None
         assert self.unit is not None
 
-        messenger.info(
-            f"This message illustrates the process of printing the unit QR-code with the URL: {url}")
+        messenger.info(f"This message illustrates the process of printing the unit QR-code with the URL: {url}")
 
     @logger.catch(reraise=True, exclude=(StateForbiddenError, AssertionError))
     async def upload_unit_passport(self) -> None:  # noqa: CAC001,CCR001

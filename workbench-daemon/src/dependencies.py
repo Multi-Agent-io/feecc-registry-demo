@@ -1,8 +1,7 @@
 from dataclasses import asdict
+from os import getenv
 
 from fastapi import HTTPException, status
-from loguru import logger
-
 from feecc_workbench import models
 from feecc_workbench.database import MongoDbWrapper
 from feecc_workbench.Employee import Employee
@@ -11,8 +10,7 @@ from feecc_workbench.Messenger import messenger
 from feecc_workbench.Unit import Unit
 from feecc_workbench.unit_utils import UnitStatus
 from feecc_workbench.utils import is_a_ean13_barcode
-from os import getenv
-
+from loguru import logger
 
 HID_DEVICES_RFID_READER: str = getenv("HID_DEVICES_RFID_READER")
 HID_DEVICES_BARCODE_READER: str = getenv("HID_DEVICES_BARCODE_READER")

@@ -1,11 +1,11 @@
 from dataclasses import asdict
+from os import getenv
 from typing import Any
 
 import pydantic
 from loguru import logger
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorCollection, AsyncIOMotorDatabase
 from pymongo import InsertOne, UpdateOne
-from os import getenv
 
 from ._db_utils import _get_database_client, _get_unit_dict_data
 from .Employee import Employee

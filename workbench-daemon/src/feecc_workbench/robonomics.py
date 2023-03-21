@@ -1,4 +1,5 @@
 import asyncio
+from os import getenv
 
 from loguru import logger
 from robonomicsinterface import Account, Datalog
@@ -7,12 +8,9 @@ from .database import MongoDbWrapper
 from .exceptions import RobonomicsError
 from .Messenger import messenger
 from .utils import async_time_execution
-from os import getenv
 
-ROBONOMICS_ACCOUNT_SEED: str = getenv(
-    "ROBONOMICS_ACCOUNT_SEED")
-ROBONOMICS_REMOTE_WS: str = getenv(
-    "ROBONOMICS_REMOTE_WS")
+ROBONOMICS_ACCOUNT_SEED: str = getenv("ROBONOMICS_ACCOUNT_SEED")
+ROBONOMICS_REMOTE_WS: str = getenv("ROBONOMICS_REMOTE_WS")
 ROBONOMICS_ACCOUNT: Account = Account(seed=ROBONOMICS_ACCOUNT_SEED, remote_ws=ROBONOMICS_REMOTE_WS)
 
 

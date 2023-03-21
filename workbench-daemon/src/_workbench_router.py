@@ -1,11 +1,8 @@
 import asyncio
 from collections.abc import AsyncGenerator
 
-from fastapi import APIRouter, Depends, HTTPException, status
-from loguru import logger
-from sse_starlette.sse import EventSourceResponse
-
 from dependencies import get_schema_by_id, get_unit_by_internal_id, identify_sender
+from fastapi import APIRouter, Depends, HTTPException, status
 from feecc_workbench import models as mdl
 from feecc_workbench.database import MongoDbWrapper
 from feecc_workbench.Employee import Employee
@@ -14,6 +11,8 @@ from feecc_workbench.Messenger import messenger
 from feecc_workbench.states import State
 from feecc_workbench.Unit import Unit
 from feecc_workbench.WorkBench import STATE_SWITCH_EVENT, WorkBench
+from loguru import logger
+from sse_starlette.sse import EventSourceResponse
 
 WORKBENCH = WorkBench()
 

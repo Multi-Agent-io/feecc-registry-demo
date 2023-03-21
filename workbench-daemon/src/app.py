@@ -1,19 +1,18 @@
 import os
 
-import uvicorn
-from fastapi import FastAPI, status
-from fastapi.middleware.cors import CORSMiddleware
-from loguru import logger
-from sse_starlette import EventSourceResponse
-
 import _employee_router
 import _unit_router
 import _workbench_router
+import uvicorn
 from _logging import HANDLERS
+from fastapi import FastAPI, status
+from fastapi.middleware.cors import CORSMiddleware
 from feecc_workbench.database import MongoDbWrapper
 from feecc_workbench.Messenger import MessageLevels, message_generator, messenger
 from feecc_workbench.models import GenericResponse
 from feecc_workbench.WorkBench import WorkBench
+from loguru import logger
+from sse_starlette import EventSourceResponse
 
 # apply logging configuration
 logger.configure(handlers=HANDLERS)

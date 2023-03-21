@@ -1,6 +1,5 @@
 import httpx
 import pytest
-
 from feecc_workbench._short_url_generator import generate_short_url, update_short_url
 
 FIRST_URL = "https://example.org"

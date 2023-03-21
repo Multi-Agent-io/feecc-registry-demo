@@ -3,8 +3,8 @@ x-shared-top-level: &shared-top-level
 
 version: "3.9"
 
-#networks:
-#  feecc-academy:
+networks:
+  feecc-academy:
 
 services:
   mongodb:
