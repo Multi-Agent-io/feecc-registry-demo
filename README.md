@@ -30,7 +30,7 @@ system - **transparent production tracking with Web3-proved safety**
 docker compose up -d --build
 ```
 
-> It may happen that you already have and IPFS instance or Robonomics Node running on your PC. With that occured, 
+> It may happen that you already have an IPFS instance or Robonomics Node running on your PC. With that occured, 
 > some containers (`ipfsnode` and `robonomics`) will fail to start, skip it
 
 ## Run

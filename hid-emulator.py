@@ -7,7 +7,6 @@ import requests
 
 logging.basicConfig(format="%(levelname)s:%(asctime)s:%(message)s", level=logging.INFO)
 API_ENDPOINT = "http://127.0.0.1:5000/workbench/hid-event"
-EventDict = dict[str, str | dict[str, str]]
 
 
 class bcolors:
@@ -31,7 +30,7 @@ while True:
         )
         action: str = input()
         if action == "1":
-            json_event: EventDict = {
+            json_event = {
                 "string": "1111111111",
                 "name": "Sample RFID Scanner",
                 "timestamp": str(datetime.timestamp(datetime.now())),
@@ -42,7 +41,7 @@ while True:
         elif action == "2":
             print("Insert the device unique code")
             code = input()
-            json_event: EventDict = {
+            json_event = {
                 "string": code,
                 "name": "Sample Barcode Scanner",
                 "timestamp": str(datetime.timestamp(datetime.now())),
