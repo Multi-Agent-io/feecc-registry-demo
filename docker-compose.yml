@@ -3,19 +3,12 @@ x-shared-top-level: &shared-top-level
 
 version: "3.9"
 
-networks:
-  feecc-academy:
-
 services:
   mongodb:
     <<: *shared-top-level
     image: mongo:jammy
     container_name: feecc_academy_mongoDB
-#    network_mode: host
-    networks:
-      - feecc-academy
-    ports:
-      - "27017:27017"
+    network_mode: host
     environment:
       MONGO_INITDB_DATABASE: FEECC-Academy
       MONGO_INITDB_ROOT_USERNAME: root
@@ -34,11 +27,7 @@ services:
     image: robonomics/robonomics:sha-bd71a23
     container_name: feecc_academy_robonomics_node
     command: "robonomics --dev --tmp"
-#    network_mode: host
-    networks:
-      - feecc-academy
-    ports:
-      - "9944:9944"
+    network_mode: host
 
   ipfsnode:
     <<: *shared-top-level
@@ -46,21 +35,12 @@ services:
     container_name: feecc_academy_ipfsnode
     healthcheck:
       interval: 5s
-#    network_mode: host
-    networks:
-      - feecc-academy
-    ports:
-      - "5001:5001"
-      - "8080:8080"
+    network_mode: host
 
   workbench-daemon:
     <<: *shared-top-level
     container_name: feecc_academy_workbench_daemon
-#    network_mode: host
-    networks:
-      - feecc-academy
-    ports:
-      - "5000:5000"
+    network_mode: host
     environment:
       MONGODB_URI: "mongodb://root:pass@localhost:27017/?authMechanism=DEFAULT"
       MONGODB_DB_NAME: "FEECC-Academy"
@@ -86,11 +66,7 @@ services:
   workbench-frontend:
     <<: *shared-top-level
     container_name: feecc_academy_workbench_frontend
-#    network_mode: host
-    networks:
-      - feecc-academy
-    ports:
-      - "3000:3000"
+    network_mode: host
     build:
       context: workbench-frontend
       dockerfile: Dockerfile
