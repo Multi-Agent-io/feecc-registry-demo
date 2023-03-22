@@ -24,6 +24,7 @@ system - **transparent production tracking with Web3-proved safety**
 ## Prerequisites
 - UNIX-like system (tested fine on [Ubuntu 22.04](https://releases.ubuntu.com/jammy/))
 - [Docker](hthttps://docs.docker.com/engine/install/ubuntu/)
+- Web browser (tested fine on Google Chrome and Mozilla Firefox)
 
 ## Install
 ```bash
@@ -33,8 +34,24 @@ docker compose up -d --build
 > It may happen that you already have an IPFS instance or Robonomics Node running on your PC. With that occured, 
 > some containers (`ipfsnode` and `robonomics`) will fail to start, skip it
 
+To validate containers running use 
+```bash
+docker ps -a
+```
+
+You should see the following (`ipfs` has exited here, since there is a native instance already running)
+```log
+CONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS                          PORTS     NAMES
+58c14d690d09   feecc-academy-workbench-daemon      "uvicorn app:app --h…"   9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_workbench_daemon
+ce7d26a60b66   feecc-academy-workbench-frontend    "node nodeServer.js"     9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_workbench_frontend
+9c86aa6c9cc6   mongo:jammy                         "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_mongoDB
+74877419bc2d   ipfs/go-ipfs:v0.17.0                "/sbin/tini -- /usr/…"   9 minutes ago   Exited (1) About a minute ago             feecc_academy_ipfsnode
+4efddc38a2f4   robonomics/robonomics:sha-bd71a23   "robonomics --dev --…"   9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_robonomics_node
+
+```
+
 ## Run
-Navigate to [localhost:3000](localhost:3000), there you will see a welcome screen.
+Navigate to [localhost:3000](http://localhost:3000), there you will see a welcome screen.
 
 ![Welcome Screen](media/welcome_screen.png)
 
@@ -105,11 +122,19 @@ which is a part of a bigger one and then click `Composite Device -> Final Assemb
 
 All the unit data is accessible locally in a unit-passports folder.
 
+## Pause
+
+May you wish to stop the containers for a while, use
+```bash
+docker compose stop
+```
+To resume the containers, use
+```bash
+docker compose start
+```
+
 ## Uninstall
 
 ```bash
-docker kill feecc_academy_mongoDB  feecc_academy_robonomics_node  feecc_academy_workbench_frontend feecc_academy_workbench_daemon feecc_academy_ipfsnode
-docker container rm feecc_academy_mongoDB  feecc_academy_robonomics_node  feecc_academy_workbench_frontend feecc_academy_workbench_daemon feecc_academy_ipfsnode
-docker image rm feecc-academy-workbench-daemon feecc-academy-workbench-frontend ipfs/go-ipfs:v0.17.0  mongo:jammy robonomics/robonomics:sha-bd71a23
-docker builder prune
+docker compose down --rmi all && docker builder prune -f
 ```
