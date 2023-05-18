@@ -23,7 +23,7 @@ system - **transparent production tracking with Web3-proved safety**
 
 ## Prerequisites
 - UNIX-like system (tested fine on [Ubuntu 22.04](https://releases.ubuntu.com/jammy/))
-- [Docker](hthttps://docs.docker.com/engine/install/ubuntu/) and [Docker compose](https://docs.docker.com/compose/)
+- [Docker](https://docs.docker.com/engine/install/ubuntu/) and [Docker compose](https://docs.docker.com/compose/)
 - Web browser (tested fine on Google Chrome and Mozilla Firefox)
 
 ## Install
