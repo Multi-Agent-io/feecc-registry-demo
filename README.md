@@ -5,14 +5,14 @@ demonstration it lacks some features like label printing or video recording, but
 system - **transparent production tracking with Web3-proved safety**
 
 ## List of used technologies
-- [Robonomics](ronomomics.network)
+- [Robonomics](https://robonomics.network)
 - [IPFS](https://ipfs.tech/)
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [MongoDB](https://www.mongodb.com/)
 
 
 ## Core concept
-> More info about this system may be found [here](https://multi-agent.io/projects/feecc/) or on [Robonomics Academy]().
+> More info about this system may be found [here](https://multi-agent.io/projects/feecc/).
 
 1. The system contains some production schemas stored in a local DB
 2. The employee authorizes into the system with their RFID card *(Omitted here in favor of HID emulator)*
@@ -23,11 +23,13 @@ system - **transparent production tracking with Web3-proved safety**
 
 ## Prerequisites
 - UNIX-like system (tested fine on [Ubuntu 22.04](https://releases.ubuntu.com/jammy/))
-- [Docker](hthttps://docs.docker.com/engine/install/ubuntu/)
+- [Docker](hthttps://docs.docker.com/engine/install/ubuntu/) and [Docker compose](https://docs.docker.com/compose/)
 - Web browser (tested fine on Google Chrome and Mozilla Firefox)
 
 ## Install
 ```bash
+git clone https://github.com/Multi-Agent-io/feecc-academy
+cd feecc-academy
 docker compose up -d --build
 ```
 
@@ -56,9 +58,10 @@ Navigate to [localhost:3000](http://localhost:3000), there you will see a welcom
 ![Welcome Screen](media/welcome_screen.png)
 
 In a real factory this requires an employee to put their RFID card on a scanner, since you don't have any, there is a 
-workaround called `hid-emulator.py`
+workaround called `hid-emulator.py`. It is available in a separate Docker container:
 
 ```bash
+docker exec -ti feecc_academy_hid_emulator sh
 python3 hid-emulator.py
 ```
 
