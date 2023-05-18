@@ -43,13 +43,13 @@ docker ps -a
 
 You should see the following (`ipfs` has exited here, since there is a native instance already running)
 ```log
-CONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS                          PORTS     NAMES
-58c14d690d09   feecc-academy-workbench-daemon      "uvicorn app:app --h…"   9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_workbench_daemon
-ce7d26a60b66   feecc-academy-workbench-frontend    "node nodeServer.js"     9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_workbench_frontend
-9c86aa6c9cc6   mongo:jammy                         "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_mongoDB
-74877419bc2d   ipfs/go-ipfs:v0.17.0                "/sbin/tini -- /usr/…"   9 minutes ago   Exited (1) About a minute ago             feecc_academy_ipfsnode
-4efddc38a2f4   robonomics/robonomics:sha-bd71a23   "robonomics --dev --…"   9 minutes ago   Up 9 minutes (healthy)                    feecc_academy_robonomics_node
-
+CONTAINER ID   IMAGE                               COMMAND                  CREATED          STATUS                             PORTS     NAMES
+0db8382bb271   feecc-academy-workbench-daemon      "uvicorn app:app --h…"   19 seconds ago   Up 7 seconds (healthy)                       feecc_academy_workbench_daemon
+0dbc7bb977d1   feecc-academy-workbench-frontend    "node nodeServer.js"     20 seconds ago   Up 19 seconds (health: starting)             feecc_academy_workbench_frontend
+a74fa229eb90   robonomics/robonomics:sha-bd71a23   "robonomics --dev --…"   20 seconds ago   Up 19 seconds (health: starting)             feecc_academy_robonomics_node
+0c9e8022658a   mongo:jammy                         "docker-entrypoint.s…"   20 seconds ago   Up 19 seconds (healthy)                      feecc_academy_mongoDB
+6b0748904d0f   ipfs/go-ipfs:v0.17.0                "/sbin/tini -- /usr/…"   20 seconds ago   Up 19 seconds (healthy)                      feecc_academy_ipfsnode
+814e6f489a77   nyurik/alpine-python3-requests      "tail -f /dev/null"      20 seconds ago   Up 19 seconds                                feecc_academy_hid_emulator
 ```
 
 ## Run
