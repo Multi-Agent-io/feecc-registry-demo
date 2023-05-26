@@ -7,7 +7,7 @@ system - **transparent production tracking with Web3-proved safety**
 ## List of used technologies
 - [Robonomics](https://robonomics.network)
 - [IPFS](https://ipfs.tech/)
-- [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+- [FastAPI](https://fastapi.tiangolo.com/)
 - [MongoDB](https://www.mongodb.com/)
 
 
