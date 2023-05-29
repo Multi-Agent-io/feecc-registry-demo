@@ -22,7 +22,7 @@ async def publish_file(file_path: pathlib.Path) -> tuple[str, str]:
             link: str = f"{IPFS_GATEWAY_LINK_PREFIX}{cid}"
             assert cid and link, "IPFS gateway returned no CID"
     except Exception as e:
-        messenger.error("An error occurred while uploading file to IPFS")
+        messenger.error("Ошибка во время загрузки файла в сеть IPFS.")
         logger.error(f"An error occurred while uploading file to IPFS: {e}")
 
     logger.info(f"File '{file_path} published to IPFS under CID {cid}'")

@@ -115,13 +115,13 @@ export default withSnackbar(
           eventSource.onerror = (e) => {
             this.setState({ SSEErrorFlag: true });
             const errorEvent = this.props.enqueueSnackbar(
-              `Cannot establish connection to the server. Retrying in ${this.state.reconnectInterval} seconds`,
+              `Не удалось установить соединение с свервером. Повторная попытка через ${this.state.reconnectInterval} секунд.`,
               {
                 variant: "error",
                 persist: true,
                 action: RepeatCloseActionButton.bind({
                   action: this.setupSSEConnection,
-                  actionName: "Retry",
+                  actionName: "Повторить",
                 }),
                 preventDuplicate: true,
               }
@@ -137,7 +137,7 @@ export default withSnackbar(
 
             if (this.state.SSEErrorFlag) {
               this.props.enqueueSnackbar(
-                "Connection to server restored.",
+                "Соединение с сервером восстановлено.",
                 {
                   variant: "success",
                   persist: false,
@@ -146,7 +146,7 @@ export default withSnackbar(
                 }
               );
             } else {
-              this.props.enqueueSnackbar("Server connection established", {
+              this.props.enqueueSnackbar("Соединение с сервером установлено.", {
                 variant: "success",
                 persist: false,
                 action: CloseActionButton,
@@ -222,7 +222,7 @@ export default withSnackbar(
                 this.props.authorized
               ) {
                 this.props.enqueueSnackbar(
-                  "Warning! 0 assembly schemas available. Contact your administrator.",
+                  "Внимание! Доступно 0 схем, обратитесь к администратору.",
                   { variant: "warning" }
                 );
               }

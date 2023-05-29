@@ -118,30 +118,30 @@ class Unit:
     def assign_component(self, component: Unit) -> None:
         """Assign one of the composite unit's components to the unit"""
         if self.components_filled:
-            messenger.warning("Unit already has all the components assigned.")
+            messenger.warning("Уже отсканированы все компоненты изделия.")
             raise ValueError(f"Unit {self.model_name} component requirements have already been satisfied")
 
         if component.schema.schema_id not in self._component_slots:
-            messenger.warning(f'Component "{component.model_name}" is not a part of unit "{self.model_name}"')
+            messenger.warning(f'Компонент {component.model_name} не является частью изделия {self.model_name}.')
             raise ValueError(
                 f"Cannot assign component {component.model_name} to {self.model_name} as it's not a component of it"
             )
 
         if self._component_slots.get(component.schema.schema_id, "") is not None:
-            messenger.warning(f'Component "{component.model_name}" has already been added to this Unit')
+            messenger.warning(f'Компонент "{component.model_name}" уже добавлен к данному изделию.')
             raise ValueError(
                 f"Component {component.model_name} is already assigned to a composite Unit {self.model_name}"
             )
 
         if component.status is not UnitStatus.built:
             messenger.warning(
-                f'Component "{component.model_name}" assembly has not been finished. Failed to assign component.'
+                f'Сборка компонента "{component.model_name}" не была завершена. Не удалось добавить компонент.'
             )
             raise ValueError(f"Component {component.model_name} assembly is not completed. {component.status=}")
 
         if component.featured_in_int_id is not None:
             messenger.warning(
-                f"Component №{component.internal_id} has already been used in unit №{component.featured_in_int_id}"
+                f"Компонент {component.internal_id} уже был использован в изделии {component.featured_in_int_id}."
             )
             raise ValueError(
                 f"Component {component.model_name} has already been used in unit {component.featured_in_int_id}"
@@ -151,7 +151,7 @@ class Unit:
         self.components_units.append(component)
         component.featured_in_int_id = self.internal_id
         logger.info(f"Component {component.model_name} has been assigned to a composite Unit {self.model_name}")
-        messenger.success(f'Component "{component.model_name}" assigned to unit "{self.model_name}"')
+        messenger.success(f'Компонент {component.model_name} присвоен изделию {self.model_name}.')
 
     def start_operation(
         self,

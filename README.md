@@ -1,8 +1,8 @@
-# FEECC Academy Demo
+# Тестовый образец ПО "Система контроля производства «Feecc РМИ»"
 
->This is a virtual stand representing a real-life instance of a FEECC production tracking system. For the purposes of
-demonstration it lacks some features like label printing or video recording, but it holds the main concept of such a
-system - **transparent production tracking with Web3-proved safety**
+> Это виртуальный стенд, представляющий реальный экземпляр системы контроля производства Feecc РМИ. Ввиду отсутствия у
+> потенциального пользователя необходимой периферии, такой как IP-камера, принтер этикеток, сканер RFID-карт и сканер 
+> штрих-кодов, данный образец предоставляет ограниченный отноистельно реальных экземпляров функционал.
 
 ## List of used technologies
 - [Robonomics](https://robonomics.network)

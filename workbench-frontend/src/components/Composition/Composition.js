@@ -81,7 +81,7 @@ class Composition extends React.Component {
         className={styles.notificationButton}
         onClick={() => this.props.closeSnackbar(key)}
       >
-        Close
+        Закрыть
       </button>
     </div>
   );
@@ -190,7 +190,7 @@ class Composition extends React.Component {
             return true;
           } else {
             this.props.enqueueSnackbar(
-              `Failed to fetch unit information. Try again later. If the error returns, contact your system administrator. Error code: ${res.status_code}`,
+              `Не удалось получить информацию об изделии, повторите попытку позже. Если ошибка повторяется, обратитесь к админстратору. Код ошибки: ${res.status_code}.`,
               { variant: "error" }
             );
             // console.log("FETCH ERROR");
@@ -218,7 +218,7 @@ class Composition extends React.Component {
             return true;
           } else {
             this.props.enqueueSnackbar(
-              `Failed to start stage recording. Try again later. If the error returns, contact your system administrator. Error code: ${res.status_code}`,
+              `Не удалось начать запись этапа сборки, повторите попытку позже. Если ошибка повторяется, обратитесь к админстратору. Код ошибки: ${res.status_code}.`,
               { variant: "error" }
             );
             reject("Error during attempt to start recording");
@@ -240,7 +240,7 @@ class Composition extends React.Component {
           return true;
         } else {
           this.props.enqueueSnackbar(
-            `Failed to finish stage recording. If the error returns, contact your system administrator. Error code: ${res.status_code}`,
+            `Не удалось звкончить съемку этапа сборки, повторите попытку позже. Если ошибка повторяется, обратитесь к админстратору. Код ошибки: ${res.status_code}.`,
             { variant: "error" }
           );
           this.toggleButtonLoading(loadBlock);
@@ -284,7 +284,7 @@ class Composition extends React.Component {
       .then((unitID) => {
         this.toggleButtonLoading(2);
         this.props.enqueueSnackbar(
-          `Certificate ${unitID} successfully uploaded to IPFS`,
+          `Сертификат ${unitID} успешно загружен в сеть IPFS`,
           {
             variant: "success",
           }
@@ -303,10 +303,10 @@ class Composition extends React.Component {
                   unitID={this.props.compositionID}
                 />
               ),
-            actionName: "Continue without save",
+            actionName: "Продолжить без сохранения",
           };
           const proceedKey = this.props.enqueueSnackbar(
-            `Error fetching schema. Response code: ${res?.response?.status}`,
+            `Ошибка в получении схемы изделия. Код ответа: ${res?.response?.status}`,
             {
               variant: "error",
               action: RepeatCloseActionButton.bind(bindObject),
@@ -328,7 +328,7 @@ class Composition extends React.Component {
           return true;
         } else {
           this.props.enqueueSnackbar(
-            `Failed to remove unit from the workbench. If the error returns, contact your system administrator. Error code: ${res.status_code}`,
+            `Не удалось убрать изделие со стола, повторите попытку позже. Если ошибка повторяется, обратитесь к админстратору. Код ошибки: ${res.status_code}.`,
             { variant: "error" }
           );
           return false;
@@ -363,7 +363,7 @@ class Composition extends React.Component {
           return true;
         } else {
           this.props.enqueueSnackbar(
-            `Failed to remove unit from the workbench. If the error returns, contact your system administrator. Error code: ${res.status_code}`,
+            `Не удалось убрать изделие со стола, повторите попытку позже. Если ошибка повторяется, обратитесь к админстратору. Код ошибки: ${res.status_code}.`,
             { variant: "error" }
           );
           return false;
@@ -576,7 +576,7 @@ class Composition extends React.Component {
                           }
                         }}
                       >
-                        {onPause ? "Continue" : t("SetOnPause")}
+                        {onPause ? "Снять с паузы" : t("SetOnPause")}
                       </LoadingButton>
                     </div>
                     {activeStep !== this.props.steps?.length - 1 && (
@@ -652,7 +652,7 @@ class Composition extends React.Component {
                   )
                 }
               >
-                Continue without save
+                Продолжить без сохранения
               </LoadingButton>
             </div>
           </div>

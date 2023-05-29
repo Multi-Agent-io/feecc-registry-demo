@@ -9,7 +9,7 @@ const CloseActionButton = (key) => {
       className={styles.notificationButton}
       onClick={() => closeSnackbar(key)}
     >
-      Close
+      Закрыть
     </button>
   );
 };

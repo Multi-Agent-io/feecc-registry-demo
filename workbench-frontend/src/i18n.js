@@ -9,7 +9,7 @@ const resources = {
     translation: fullCSV[0]
   },
   en: {
-    translation: fullCSV[1]
+    translation: fullCSV[0]
   }
 }
 

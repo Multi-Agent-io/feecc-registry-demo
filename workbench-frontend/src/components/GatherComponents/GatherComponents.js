@@ -34,7 +34,7 @@ export default withTheme(withTranslation()(connect(
               this.setState({schemas: {...obj}})
               return true
             } else {
-              this.props.raiseNotification('Error fetching schema information. Try rebooting the page.')
+              this.props.raiseNotification('Ошибка во время загрузки схемы изделия. Повторите попытку.')
               return false
             }
           }, null

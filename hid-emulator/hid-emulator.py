@@ -24,9 +24,9 @@ class bcolors:
 while True:
     try:
         print(
-            "Select emulated action (1/2): \n",
-            f"{bcolors.OKGREEN}1. Put ID card on the RFID scanner.\n{bcolors.ENDC}",
-            f"{bcolors.OKBLUE}2. Scan a sample barcode with a barcode scanner.{bcolors.ENDC}",
+            "Выберите эмулированное действие (1/2): \n",
+            f"{bcolors.OKGREEN}1. Приложить карту сотрудника к RFID-сканеру.\n{bcolors.ENDC}",
+            f"{bcolors.OKBLUE}2. Отсканировать штрих-код изделия (потребуется ввести штрих-код).{bcolors.ENDC}",
         )
         action: str = input()
         if action == "1":
@@ -37,9 +37,9 @@ while True:
                 "info": {},
             }
             requests.post(url=API_ENDPOINT, json=json_event)
-            logging.info(f"Event relayed to endpoint {API_ENDPOINT}")
+            # logging.info(f"Event relayed to endpoint {API_ENDPOINT}")
         elif action == "2":
-            print("Insert the device unique code")
+            print("Введите уникальный номер изделия")
             code = input()
             json_event = {
                 "string": code,
@@ -48,8 +48,8 @@ while True:
                 "info": {},
             }
             requests.post(url=API_ENDPOINT, json=json_event)
-            logging.info(f"Event relayed to endpoint {API_ENDPOINT}")
+            # logging.info(f"Event relayed to endpoint {API_ENDPOINT}")
         else:
-            print(f"{bcolors.FAIL}Input 1 or 2{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}Введите 1 или 2{bcolors.ENDC}")
     except Exception as e:
-        print(f"{bcolors.FAIL}Error: {e}{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}Ошибка: {e}{bcolors.ENDC}")

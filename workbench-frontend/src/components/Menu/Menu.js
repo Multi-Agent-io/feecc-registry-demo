@@ -85,7 +85,7 @@ export default withSnackbar(
                   this.props.authorized
                 ) {
                   this.props.enqueueSnackbar(
-                    "Warning! 0 schemas available. Contact your administrator to add schemas to the menu.",
+                    "Внимание! Доступно 0 схем, обратитесь к администратору.",
                     { variant: "warning" }
                   );
                 }
@@ -113,7 +113,7 @@ export default withSnackbar(
                     // Check if the whole scheme is empty
                     if (schema === null) {
                       this.props.enqueueSnackbar(
-                        "Error. No such schema. Contact your administrator.",
+                        "Ошибка. Такая схема отсутствует. Обратитесь к администратору.",
                         { variant: "error" }
                       );
                       reject(res);
@@ -121,7 +121,7 @@ export default withSnackbar(
                     // Check if this scheme has no stages at all
                     if (schema.production_stages === null) {
                       this.props.enqueueSnackbar(
-                        "Error. Schema contains no stages. Contact your administrator.",
+                        "Ошибка. Схема не содержит этапов. Обратитесь к администратору.",
                         { variant: "error" }
                       );
                       reject(res);

@@ -16,19 +16,19 @@ const ProceedNotSaved = (props) => {
     <div className={styles.contentWrapper}>
       <div className={styles.contentHeader}>{t("ImportantMessage")}</div>
       <div className={styles.contentText}>
-        Continuing <strong>without</strong> requires you to do some exact actions later.
-        Without them the unit will not considered finished. Unit data <strong>was not</strong> uploaded to IPFS,
-        but they <strong>are stored locally</strong> and you can always return to this unit later.
+        Продолжение <strong>без</strong> сохранения требует действий в дальнейшем.
+        Без их выполнения изделие не будет завершенным. Данные об изделии <strong>не были</strong> выгружены в сеть IPFS,
+        они были <strong>сохранены локально</strong>, вы всегда можете вернуться к сборке.
         <br />
         <br />
-        When possible to save, yuo are required to:
+        Чтобы вернуться к сборке изделия, необходимо бужет выполнить следующее:
         <br />
-        - Scan unit barcode.
+        - Отсканировать штрих-код изделия.
         <br />
-        - Save the certificate.
+        - Сохранить сертификат изделия.
         <br />
         <br />
-        If succeeded? the unit certificate will be saved in the blockchain. If any error appears, contact administrator.
+        При отсутствии ошибок сертификат будет выгружен в сеть IPFS и сеть Robonomics.
       </div>
       <div className={styles.buttonsWrapper}>
         <LoadingButton
@@ -40,13 +40,13 @@ const ProceedNotSaved = (props) => {
           onClick={() => {
             props.onNoSave && props.onNoSave();
             enqueueSnackbar(
-              `Certificate ${props.unitID} was not saved in IPFS. You are to return to it later.`,
+              `Сертификат ${props.unitID} не был выгружен в сеть IPFS. необходимо вернуться к нему позже.`,
               { variant: "warning", action: CloseActionButton }
             );
             onClose();
           }}
         >
-          Proceed without save
+          Продолжить без сохранения
         </LoadingButton>
         <LoadingButton
           size="large"
@@ -56,7 +56,7 @@ const ProceedNotSaved = (props) => {
           variant="contained"
           onClick={onClose}
         >
-          Back
+          Назад
         </LoadingButton>
       </div>
     </div>

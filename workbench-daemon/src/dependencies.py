@@ -21,7 +21,7 @@ async def get_unit_by_internal_id(unit_internal_id: str) -> Unit:
         return await MongoDbWrapper().get_unit_by_internal_id(unit_internal_id)
 
     except UnitNotFoundError as e:
-        messenger.warning("Unit not found")
+        messenger.warning("Изделие не найдено")
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e)) from e
 
 
@@ -31,7 +31,7 @@ async def get_employee_by_card_id(employee_data: models.EmployeeID) -> models.Em
         return models.EmployeeWCardModel(**asdict(employee))
 
     except EmployeeNotFoundError as e:
-        messenger.warning("Employee not found")
+        messenger.warning("Сотрудник не найден")
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e)) from e
 
 
@@ -61,7 +61,7 @@ def identify_sender(event: models.HidEvent) -> models.HidEvent:
         if device_name == event.name:
             if sender_name == "barcode_reader" and not is_a_ean13_barcode(event.string):
                 message = f"'{event.string}' is not a EAN13 barcode and cannot be an internal unit ID."
-                messenger.default("'{event.string}' is not a EAN13 barcode and cannot be an internal unit ID.")
+                messenger.default(f"'{event.string}' не является EAN13 штрих-кодом.")
                 logger.warning(message)
                 raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=message)
 

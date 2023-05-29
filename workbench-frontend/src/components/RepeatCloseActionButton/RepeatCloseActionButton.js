@@ -19,7 +19,7 @@ function RepeatCloseActionButton(key) {
           closeSnackbar(key);
         }}
       >
-        Close
+        Закрыть
       </button>
     </div>
   );

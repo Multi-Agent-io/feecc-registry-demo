@@ -13,8 +13,8 @@ const ReloadWarning = (props) => {
     <div className={styles.contentWrapper}>
       <div className={styles.contentHeader}>{t("ImportantMessage")}</div>
       <div className={styles.contentText}>
-        You are about to reload the page. <br/>This <strong>may</strong>, but <strong>should not</strong> lead to any errors on this stage.
-        Do not reload the page if possible.
+        Вы собираетесь перезагрузить страницу. <br/>Это <strong>может</strong>, но <strong>не должно</strong> вызвать некоторые ошибки.
+        По возможности не перезагружайте страницу.
       </div>
       <div className={styles.buttonsWrapper}>
         <LoadingButton
@@ -25,7 +25,7 @@ const ReloadWarning = (props) => {
           variant="outlined"
           onClick={props.reloadAction}
         >
-          Reload
+          Перезагрузить
         </LoadingButton>
         <LoadingButton
           size="large"
@@ -35,7 +35,7 @@ const ReloadWarning = (props) => {
           variant="contained"
           onClick={onClose}
         >
-          Close
+          Закрыть
         </LoadingButton>
       </div>
     </div>

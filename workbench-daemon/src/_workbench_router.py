@@ -185,7 +185,7 @@ async def handle_barcode_event(event_string: str) -> None:
             WORKBENCH.assign_unit(unit)
         case State.UNIT_ASSIGNED_IDLING_STATE:
             if WORKBENCH.unit is not None and WORKBENCH.unit.uuid == unit.uuid:
-                messenger.info("This unit is already placed on a workbench")
+                messenger.info("Это изделие уже помещено на рабочий стол.")
                 return
             WORKBENCH.remove_unit()
             WORKBENCH.assign_unit(unit)
@@ -204,7 +204,7 @@ async def handle_rfid_event(event_string: str) -> None:
     try:
         employee: Employee = await MongoDbWrapper().get_employee_by_card_id(event_string)
     except EmployeeNotFoundError as e:
-        messenger.warning("Employee not found")
+        messenger.warning("Сотрудник не найден.")
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e)) from e
 
     WORKBENCH.log_in(employee)

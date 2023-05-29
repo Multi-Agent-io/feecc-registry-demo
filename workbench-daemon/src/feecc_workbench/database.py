@@ -154,7 +154,7 @@ class MongoDbWrapper(metaclass=SingletonMeta):
         employee_data: Document | None = await self._employee_collection.find_one({"rfid_card_id": card_id}, {"_id": 0})
 
         if employee_data is None:
-            message = f"No employee with card ID {card_id}"
+            message = f"Сотрудник с картой {card_id} не найден!"
             logger.error(message)
             raise EmployeeNotFoundError(message)
 
@@ -186,7 +186,7 @@ class MongoDbWrapper(metaclass=SingletonMeta):
             raise e
 
         if not result:
-            message = f"Unit with internal id {unit_internal_id} not found"
+            message = f"Изделие с номером {unit_internal_id} не найдено!"
             logger.warning(message)
             raise UnitNotFoundError(message)
 
