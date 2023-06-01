@@ -18,7 +18,6 @@
 3. They then can select an item to assemble
 4. The entire process is guided and tracked e.g. with a video camera *(Omitted here in favor of user confidentiality)*
 5. The production data is saved in a decentralized file storage *(Here, a local IPFS node is used)*
-6. The IPFS CID of  unit certificate is securely stored in Robonomics blockchain. *Here, local instance of Robonomics Node used*
 
 ## Prerequisites
 - UNIX-like system (tested fine on [Ubuntu 22.04](https://releases.ubuntu.com/jammy/))
@@ -32,8 +31,8 @@ cd feecc-registry-demo
 docker compose up -d --build
 ```
 
-> It may happen that you already have an IPFS instance or Robonomics Node running on your PC. With that occured, 
-> some containers (`ipfsnode` and `robonomics`) will fail to start, skip it
+> It may happen that you already have an IPFS instance running on your PC. With that occured, 
+> some containers (`ipfsnode`) will fail to start, skip it
 
 To validate containers running use 
 ```bash
@@ -90,18 +89,12 @@ needed. Here there are just dummy strings in a certificate.
 
 ![Single Save Passport](media/single_save_passport.png)
 
-Before clicking `Save passport`, navigate to a 
-[local Robonomics Node](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/explorer), you will need it later.
-
-Back in the FEECC interface, click `Save Passport` button.
+Сlick `Save Passport` button.
 
 ![Single Certificate](media/single_certificate.png)
 
 
-What happens here is the certificate is uploaded to IPFS along with some tracked data and the CID is stored in Robonomics
-Network, you may see it in the extrinsics list or recent events.
-
-![Single Datalog](media/single_datalog.png)
+What happens here is the certificate is uploaded to IPFS along with some tracked data.
 
 Once again, the blue messages illustrates printing the seal tag and QR-code leading to the certificate. 
 The QR-code contains a link to an IPFS gateway with the device certificate. Since your local IPFS node may not have that
