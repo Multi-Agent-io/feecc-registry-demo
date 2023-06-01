@@ -5,6 +5,7 @@ from loguru import logger
 
 from .database import MongoDbWrapper
 from .Employee import Employee
+from .Camera import Camera
 from .exceptions import StateForbiddenError
 from .ipfs import publish_file
 from .Messenger import messenger
@@ -44,6 +45,7 @@ class WorkBench(metaclass=SingletonMeta):
         self._database: MongoDbWrapper = MongoDbWrapper()
         self.number: int = 1
         self.employee: Employee | None = None
+        self.camera: Camera = Camera()
         self.unit: Unit | None = None
         self.state: State = State.AWAIT_LOGIN_STATE
 
@@ -168,6 +170,8 @@ class WorkBench(metaclass=SingletonMeta):
             messenger.error("No employee is logged in at the workbench")
             raise AssertionError(message)
 
+        await self.camera.start_record()
+
         self.unit.start_operation(self.employee, additional_info)
 
         self.switch_state(State.PRODUCTION_STAGE_ONGOING_STATE)
@@ -186,6 +190,39 @@ class WorkBench(metaclass=SingletonMeta):
             await self._database.push_unit(self.unit)
             self.switch_state(State.UNIT_ASSIGNED_IDLING_STATE)
 
+    async def _end_record(self) -> tuple[list[str], str]:  # noqa: CAC001
+        """End ongoing records and publish them to IPFS"""
+        assert self.camera is not None and self.employee is not None
+        override_timestamp = timestamp()
+        ipfs_hashes: list[str] = []
+
+        try:
+            await self.camera.end_record()
+            override_timestamp = timestamp()
+            assert self.camera.record is not None, "No record found"
+            file: str | None = self.camera.record.filename
+        except Exception as e:
+            logger.error(f"Failed to end record: {e}")
+            messenger.warning("Этап завершен, однако сохранить видео не удалось. Обратитесь к администратору.")
+            file = None
+
+        if file is not None:
+            try:
+                data = await publish_file(file_path=Path(file))
+
+                if data is not None:
+                    cid, link = data
+                    ipfs_hashes.append(cid)
+            except Exception as e:
+                logger.error(f"Failed to publish record: {e}")
+                messenger.warning(
+                    "Этап завершен, однако опубликовать видеозапись в сети IPFS не удалось. "
+                    "Видеозапись сохранена локально. Обратитесь к администратору."
+                )
+                ipfs_hashes = []
+
+        return ipfs_hashes, override_timestamp
+
     @logger.catch(reraise=True, exclude=(StateForbiddenError, AssertionError))
     async def end_operation(self, additional_info: AdditionalInfo | None = None, premature: bool = False) -> None:
         """end work on the provided unit"""
@@ -198,8 +235,13 @@ class WorkBench(metaclass=SingletonMeta):
 
         logger.info("Trying to end operation")
         override_timestamp = timestamp()
+        ipfs_hashes: list[str] = []
+
+        if self.camera is not None and self.employee is not None:
+            ipfs_hashes, override_timestamp = await self._end_record()
 
         await self.unit.end_operation(
+            video_hashes=ipfs_hashes,
             additional_info=additional_info,
             premature=premature,
             override_timestamp=override_timestamp,

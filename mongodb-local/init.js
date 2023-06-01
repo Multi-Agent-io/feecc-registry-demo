@@ -126,7 +126,7 @@ db.productionSchemas.insertMany(
                 {
                     "name": "Подготовка инструментов",
                     "type": "Подготовка",
-                    "description": "Открыть ящик с инструментами, достать скот",
+                    "description": "Открыть ящик с инструментами, достать скотч",
                     "equipment": ["Ящик с инструментами"],
                     "workplace": "Сборочный стол",
                     "duration_seconds": 0,
