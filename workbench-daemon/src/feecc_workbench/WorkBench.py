@@ -212,7 +212,7 @@ class WorkBench(metaclass=SingletonMeta):
 
                 if data is not None:
                     cid, link = data
-                    ipfs_hashes.append(cid)
+                    ipfs_hashes.append(link)
             except Exception as e:
                 logger.error(f"Failed to publish record: {e}")
                 messenger.warning(
