@@ -2,6 +2,7 @@
 
 import logging
 from datetime import datetime
+from sys import exit
 
 import requests
 
@@ -24,9 +25,10 @@ class bcolors:
 while True:
     try:
         print(
-            "Выберите эмулированное действие (1/2): \n",
+            "Выберите эмулированное действие (1/2/3): \n",
             f"{bcolors.OKGREEN}1. Приложить карту сотрудника к RFID-сканеру.\n{bcolors.ENDC}",
-            f"{bcolors.OKBLUE}2. Отсканировать штрих-код изделия (потребуется ввести штрих-код).{bcolors.ENDC}",
+            f"{bcolors.OKBLUE}2. Отсканировать штрих-код изделия (потребуется ввести штрих-код).\n{bcolors.ENDC}",
+            f"{bcolors.OKBLUE}3. Выход.{bcolors.ENDC}",
         )
         action: str = input()
         if action == "1":
@@ -49,7 +51,9 @@ while True:
             }
             requests.post(url=API_ENDPOINT, json=json_event)
             # logging.info(f"Event relayed to endpoint {API_ENDPOINT}")
+        elif action == "3":
+            exit()
         else:
-            print(f"{bcolors.FAIL}Введите 1 или 2{bcolors.ENDC}")
+            print(f"{bcolors.FAIL}Введите 1, 2 или 3{bcolors.ENDC}")
     except Exception as e:
         print(f"{bcolors.FAIL}Ошибка: {e}{bcolors.ENDC}")

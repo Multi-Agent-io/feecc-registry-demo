@@ -9,11 +9,11 @@ StartComposition,Начать сборку,Start composition
 FinishSession,Закончить сессию,Finish session
 Finish,Закончить,Finish
 Next,Далее,Next
-QualityMonitoringSystem,"Система контроля качества производства на базе платформы ""Feecc""","Production quality control system based on the ""Feecc"" platform"
+QualityMonitoringSystem,"Система контроля производства «Feecc РМИ»","Production quality control system based on the ""Feecc"" platform"
 AuthorizeToProceed,Для начала сборки авторизуйтесь,Authorize to proceed
 NotEnoughDuration,Слишком малая длительность этапа!,Step duration is too small!
 CancelComposition,Отменить сборку,Cancel composition
-SavePassport,Сохранить паспорт,Save passport
+SavePassport,Сохранить сертификат,Save passport
 SpecifyCompositionType,Укажите вариант сборки,Specify composition type
 Back,Назад,Back
 GettingWorkbenchNo,Идёт определение номера рабочего места,Workbench number receiving in progress
