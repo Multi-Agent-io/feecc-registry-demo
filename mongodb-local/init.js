@@ -1,5 +1,5 @@
 // Connect to the database
-db = connect("mongodb://localhost:27017/FEECC-Academy");
+db = connect("mongodb://localhost:27017/FEECC-Demo");
 
 // Create required collections
 db.createCollection("employeeData");

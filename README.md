@@ -5,7 +5,6 @@
 > штрих-кодов, данный образец предоставляет ограниченный отноистельно реальных экземпляров функционал.
 
 ## List of used technologies
-- [Robonomics](https://robonomics.network)
 - [IPFS](https://ipfs.tech/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [MongoDB](https://www.mongodb.com/)
@@ -43,13 +42,12 @@ docker ps -a
 
 You should see the following (`ipfs` has exited here, since there is a native instance already running)
 ```log
-CONTAINER ID   IMAGE                               COMMAND                  CREATED          STATUS                             PORTS     NAMES
-0db8382bb271   feecc-academy-workbench-daemon      "uvicorn app:app --h…"   19 seconds ago   Up 7 seconds (healthy)                       feecc_academy_workbench_daemon
-0dbc7bb977d1   feecc-academy-workbench-frontend    "node nodeServer.js"     20 seconds ago   Up 19 seconds (health: starting)             feecc_academy_workbench_frontend
-a74fa229eb90   robonomics/robonomics:sha-bd71a23   "robonomics --dev --…"   20 seconds ago   Up 19 seconds (health: starting)             feecc_academy_robonomics_node
-0c9e8022658a   mongo:jammy                         "docker-entrypoint.s…"   20 seconds ago   Up 19 seconds (healthy)                      feecc_academy_mongoDB
-6b0748904d0f   ipfs/go-ipfs:v0.17.0                "/sbin/tini -- /usr/…"   20 seconds ago   Up 19 seconds (healthy)                      feecc_academy_ipfsnode
-814e6f489a77   nyurik/alpine-python3-requests      "tail -f /dev/null"      20 seconds ago   Up 19 seconds                                feecc_academy_hid_emulator
+CONTAINER ID   IMAGE                                    COMMAND                  CREATED          STATUS                    PORTS     NAMES
+1e1a43676c7e   nyurik/alpine-python3-requests           "tail -f /dev/null"      53 seconds ago   Up 42 seconds                       feecc_demo_hid_emulator
+d00f1fa10532   feecc-registry-demo-workbench-daemon     "uvicorn app:app --h…"   3 minutes ago    Up 3 minutes (healthy)              feecc_demo_workbench_daemon
+af97b4c2f077   feecc-registry-demo-workbench-frontend   "node nodeServer.js"     3 minutes ago    Up 3 minutes (healthy)              feecc_demo_workbench_frontend
+368d5b82d3d4   mongo:jammy                              "docker-entrypoint.s…"   3 minutes ago    Up 3 minutes (healthy)              feecc_demo_mongoDB
+43f78d21ae2a   ipfs/go-ipfs:v0.17.0                     "/sbin/tini -- /usr/…"   3 minutes ago    Up 42 seconds (healthy)             feecc_demo_ipfsnode
 ```
 
 ## Run
