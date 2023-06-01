@@ -7,10 +7,10 @@ services:
   mongodb:
     <<: *shared-top-level
     image: mongo:jammy
-    container_name: feecc_academy_mongoDB
+    container_name: feecc_demo_mongoDB
     network_mode: host
     environment:
-      MONGO_INITDB_DATABASE: FEECC-Academy
+      MONGO_INITDB_DATABASE: FEECC-Demo
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: pass
     volumes:
@@ -25,18 +25,18 @@ services:
   ipfsnode:
     <<: *shared-top-level
     image: ipfs/go-ipfs:v0.17.0
-    container_name: feecc_academy_ipfsnode
+    container_name: feecc_demo_ipfsnode
     healthcheck:
       interval: 5s
     network_mode: host
 
   workbench-daemon:
     <<: *shared-top-level
-    container_name: feecc_academy_workbench_daemon
+    container_name: feecc_demo_workbench_daemon
     network_mode: host
     environment:
       MONGODB_URI: "mongodb://root:pass@localhost:27017/?authMechanism=DEFAULT"
-      MONGODB_DB_NAME: "FEECC-Academy"
+      MONGODB_DB_NAME: "FEECC-Demo"
       PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR: "/ip4/127.0.0.1/tcp/5001/http"
       IPFS_GATEWAY_LINK_PREFIX: "http://localhost:8080/ipfs/"
       HID_DEVICES_RFID_READER: Sample RFID Scanner  # RFID reader device name
@@ -55,7 +55,7 @@ services:
 
   workbench-frontend:
     <<: *shared-top-level
-    container_name: feecc_academy_workbench_frontend
+    container_name: feecc_demo_workbench_frontend
     network_mode: host
     build:
       context: workbench-frontend
@@ -76,7 +76,7 @@ services:
   hid-emulator:
     <<: *shared-top-level
     image: nyurik/alpine-python3-requests
-    container_name: feecc_academy_hid_emulator
+    container_name: feecc_demo_hid_emulator
     network_mode: host
     build:
       context: hid-emulator

@@ -28,8 +28,8 @@
 
 ## Install
 ```bash
-git clone https://github.com/Multi-Agent-io/feecc-academy
-cd feecc-academy
+git clone https://github.com/Multi-Agent-io/feecc-registry-demo
+cd feecc-registry-demo
 docker compose up -d --build
 ```
 
@@ -61,7 +61,7 @@ In a real factory this requires an employee to put their RFID card on a scanner,
 workaround called `hid-emulator.py`. It is available in a separate Docker container:
 
 ```bash
-docker exec -ti feecc_academy_hid_emulator sh
+docker exec -ti feecc_demo_hid_emulator sh
 python3 hid-emulator.py
 ```
 
