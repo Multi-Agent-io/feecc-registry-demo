@@ -28,7 +28,7 @@ const ProceedNotSaved = (props) => {
         - Сохранить сертификат изделия.
         <br />
         <br />
-        При отсутствии ошибок сертификат будет выгружен в сеть IPFS и сеть Robonomics.
+        При отсутствии ошибок сертификат будет выгружен в сеть IPFS.
       </div>
       <div className={styles.buttonsWrapper}>
         <LoadingButton

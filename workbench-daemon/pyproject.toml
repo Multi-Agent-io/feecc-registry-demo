@@ -2,7 +2,7 @@
 name = "Feecc-Workbench-Daemon"
 version = "1.3.3"
 description = "Workbench software for the Feecc QA system"
-authors = ["arseniiarsenii <arseniivelichko2@gmail.com>"]
+authors = ["arseniiarsenii <arseniivelichko2@gmail.com>", "Pavel Tarasov <patara@multi-agent.io>"]
 license = "Apache 2.0"
 
 [tool.poetry.dependencies]
@@ -21,7 +21,6 @@ environ-config = "^22.1.0"
 yarl = "^1.8.1"
 sse-starlette = "^1.1.6"
 python-dotenv = "^0.21.0"
-robonomics-interface = "^1.2.2"
 aioprometheus = "^22.5.0"
 ipfs-toolkit = "^0.5.0"
 

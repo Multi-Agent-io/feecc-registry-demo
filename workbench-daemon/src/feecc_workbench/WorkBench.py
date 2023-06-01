@@ -11,7 +11,6 @@ from .ipfs import publish_file
 from .Messenger import messenger
 from .models import ProductionSchema
 from .passport_generator import construct_unit_passport
-from .robonomics import post_to_datalog
 from .Singleton import SingletonMeta
 from .states import STATE_TRANSITION_MAP, State
 from .Types import AdditionalInfo
@@ -279,9 +278,6 @@ class WorkBench(metaclass=SingletonMeta):
 
         await self._print_qr(link)
         await _print_security_tag()
-
-        # Publish passport file's IPFS CID to Robonomics Datalog
-        asyncio.create_task(post_to_datalog(cid, self.unit.internal_id))
 
         # Update unit data saved in the DB
         await self._database.push_unit(self.unit)

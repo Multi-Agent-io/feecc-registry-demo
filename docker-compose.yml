@@ -22,13 +22,6 @@ services:
       retries: 3
       start_period: 10s
 
-  robonomics:
-    <<: *shared-top-level
-    image: robonomics/robonomics:sha-bd71a23
-    container_name: feecc_academy_robonomics_node
-    command: "robonomics --dev --tmp"
-    network_mode: host
-
   ipfsnode:
     <<: *shared-top-level
     image: ipfs/go-ipfs:v0.17.0
@@ -46,8 +39,6 @@ services:
       MONGODB_DB_NAME: "FEECC-Academy"
       PY_IPFS_HTTP_CLIENT_DEFAULT_ADDR: "/ip4/127.0.0.1/tcp/5001/http"
       IPFS_GATEWAY_LINK_PREFIX: "http://localhost:8080/ipfs/"
-      ROBONOMICS_ACCOUNT_SEED: "//Alice"  # Your Robonomics network account seed phrase
-      ROBONOMICS_REMOTE_WS: "ws://127.0.0.1:9944"
       HID_DEVICES_RFID_READER: Sample RFID Scanner  # RFID reader device name
       HID_DEVICES_BARCODE_READER: Sample Barcode Scanner  # Barcode reader device name
       FFMPEG_COMMAND: 'ffmpeg -loglevel warning -i videos/demo_assembly.mp4 FILENAME'  # ffmpeg stream
@@ -58,8 +49,6 @@ services:
     depends_on:
       mongodb:
         condition: service_healthy
-      robonomics:
-        condition: service_started
     build:
       context: workbench-daemon
       dockerfile: Dockerfile

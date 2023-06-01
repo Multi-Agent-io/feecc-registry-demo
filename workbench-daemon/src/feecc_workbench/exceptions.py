@@ -8,7 +8,3 @@ class EmployeeNotFoundError(Exception):
 
 class StateForbiddenError(Exception):
     """Raised when state transition is forbidden"""
-
-
-class RobonomicsError(Exception):
-    """Raised when Robonomics transactions fail"""
